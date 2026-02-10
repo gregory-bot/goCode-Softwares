@@ -32,11 +32,33 @@ const BookService = () => {
     setIsSubmitting(true);
 
     try {
+      // Save to Firebase
       await addDoc(collection(db, 'bookings'), {
         ...formData,
         timestamp: new Date(),
         status: 'new'
       });
+
+      // Save to Google Sheets (no-cors required for Google Apps Script)
+      const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_BOOKING_URL || '';
+      if (GOOGLE_SHEET_URL) {
+        try {
+          await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...formData,
+              timestamp: new Date().toISOString()
+            })
+          });
+          console.log('Booking sent to Google Sheets');
+        } catch (sheetError) {
+          console.error('Google Sheets error:', sheetError);
+        }
+      }
 
       toast.success('Booking request submitted successfully! We\'ll contact you within 24 hours.');
       setFormData({
@@ -60,13 +82,11 @@ const BookService = () => {
   };
 
   const services = [
-    'Web Development',
-    'Mobile Development',
+    'Data Engineering',
+    'Data Analytics',
+    'Data Science',
     'Software Development',
-    'Data Science & AI',
-    'UI/UX Design',
-    'Consulting',
-    'Other'
+    'AI Solutions'
   ];
 
   const projectTypes = [
@@ -76,15 +96,6 @@ const BookService = () => {
     'System Integration',
     'Migration',
     'Consultation Only'
-  ];
-
-  const budgetRanges = [
-    'Under $5,000',
-    '$5,000 - $10,000',
-    '$10,000 - $25,000',
-    '$25,000 - $50,000',
-    '$50,000 - $100,000',
-    'Over $100,000'
   ];
 
   const timelines = [
@@ -112,30 +123,6 @@ const BookService = () => {
             Ready to start your project? Fill out the form below and we'll get back to you with a 
             custom quote and timeline within 24 hours.
           </p>
-        </motion.div>
-
-        {/* Benefits */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-        >
-          <div className="bg-white rounded-lg p-6 shadow-md text-center">
-            <Calendar className="h-12 w-12 text-green-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Response</h3>
-            <p className="text-gray-600">We respond to all inquiries within 24 hours</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-md text-center">
-            <DollarSign className="h-12 w-12 text-green-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Transparent Pricing</h3>
-            <p className="text-gray-600">No hidden fees, clear and upfront pricing</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-md text-center">
-            <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Quality Guarantee</h3>
-            <p className="text-gray-600">100% satisfaction guarantee on all projects</p>
-          </div>
         </motion.div>
 
         {/* Booking Form */}
@@ -260,21 +247,18 @@ const BookService = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-                  Budget Range *
+                  Your Budget *
                 </label>
-                <select
+                <input
+                  type="text"
                   id="budget"
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
-                >
-                  <option value="">Select budget range</option>
-                  {budgetRanges.map((range, index) => (
-                    <option key={index} value={range}>{range}</option>
-                  ))}
-                </select>
+                  placeholder="e.g., $10,000 or €5,000-€8,000"
+                />
               </div>
               
               <div>

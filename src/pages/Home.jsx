@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Smartphone, Globe, Database, ThumbsUp, Eye, Users, Star } from 'lucide-react';
+import { ArrowRight, ThumbsUp, Eye, Users, Star } from 'lucide-react';
 import { collection, onSnapshot, doc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import toast from 'react-hot-toast';
@@ -13,15 +13,15 @@ const Home = () => {
   const [team, setTeam] = useState([]);
 
   const heroImages = [
-    'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200'
+    'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    'https://media.istockphoto.com/id/2161929587/photo/two-analyst-women-using-kpi-dashboard-for-data-analytics-digital-data-technology-concept.jpg?s=612x612&w=0&k=20&c=QRFaozaHFdgliUYOhUkrlpxA9bAvN2xAKEZYNMBNi6s='
   ];
 
   // Auto-rotate hero images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 10000);
+    }, 15000);
     return () => clearInterval(interval);
   }, []);
 
@@ -62,44 +62,65 @@ const Home = () => {
   }, []);
 
   const handleVote = async (projectId) => {
+    // Check if already voted in this session
+    const votedProjects = JSON.parse(sessionStorage.getItem('votedProjects') || '[]');
+    
+    if (votedProjects.includes(projectId)) {
+      toast.error('You have already voted for this project!');
+      return;
+    }
+
     try {
       await updateDoc(doc(db, 'projects', projectId), {
         votes: increment(1)
       });
+      
+      // Save to session storage
+      votedProjects.push(projectId);
+      sessionStorage.setItem('votedProjects', JSON.stringify(votedProjects));
+      
       toast.success('Thank you for your vote!');
     } catch (error) {
       toast.error('Error voting. Please try again.');
     }
   };
 
+  // Helper function to check if user has voted
+  const hasVoted = (projectId) => {
+    const votedProjects = JSON.parse(sessionStorage.getItem('votedProjects') || '[]');
+    return votedProjects.includes(projectId);
+  };
+
   const defaultServices = [
     {
-      id: 'web-dev',
-      title: 'Web Development',
-      description: 'Custom web applications built with modern technologies',
-      icon: Globe,
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400'
+      id: 'data-engineering',
+      title: 'Data Engineering Solutions',
+      description: 'Build robust data pipelines and infrastructure for scalable data processing',
+      image: 'https://i.pinimg.com/736x/e6/35/c1/e635c1e8d80999c3ad87576d4bfc0032.jpg'
     },
     {
-      id: 'mobile-dev',
-      title: 'Mobile Development',
-      description: 'Native and cross-platform mobile applications',
-      icon: Smartphone,
-      image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=400'
-    },
-    {
-      id: 'software-dev',
-      title: 'Software Development',
-      description: 'Desktop applications and enterprise software solutions',
-      icon: Code,
-      image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400'
+      id: 'data-analytics',
+      title: 'Data Analytics Solutions',
+      description: 'Transform raw data into actionable insights and business intelligence',
+      image: 'https://i.postimg.cc/YS3NWbk7/hahaw.jpg'
     },
     {
       id: 'data-science',
-      title: 'Data Science',
-      description: 'Data analysis, machine learning, and AI solutions',
-      icon: Database,
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=400'
+      title: 'Data Science Solutions',
+      description: 'Advanced analytics and predictive modeling to drive data-driven decisions',
+      image: 'https://pbs.twimg.com/media/G7quTWhW4AAJM4l?format=jpg&name=large'
+    },
+    {
+      id: 'software-dev',
+      title: 'Software Development Solutions',
+      description: 'Custom software applications and enterprise solutions tailored to your needs',
+      image: 'https://i.pinimg.com/736x/a6/83/15/a68315f072dd25f4c2d3410bf486b6f2.jpg'
+    },
+    {
+      id: 'ai-solutions',
+      title: 'AI Solutions',
+      description: 'Intelligent automation and machine learning solutions for modern businesses',
+      image: 'https://pbs.twimg.com/media/G7gIG0cXUAA65se?format=jpg&name=large'
     }
   ];
 
@@ -135,18 +156,10 @@ const Home = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl font-bold mb-6"
           >
-            Get Software at Your Desire
+            Center for Data and Software Solutions
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 text-gray-200"
-          >
-            We create innovative software solutions that transform your ideas into reality
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -174,14 +187,10 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer comprehensive software development services to help your business thrive in the digital world
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayServices.map((service, index) => {
-              const Icon = service.icon || Code;
               return (
                 <motion.div
                   key={service.id}
@@ -189,17 +198,14 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
                 >
-                  <div className="relative h-48">
+                  <div className="relative h-64 overflow-hidden group">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-green-600 bg-opacity-80 flex items-center justify-center">
-                      <Icon className="h-16 w-16 text-white" />
-                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
@@ -258,9 +264,15 @@ const Home = () => {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleVote(project.id)}
-                        className="flex items-center space-x-1 text-green-600 hover:text-green-700 transition-colors"
+                        disabled={hasVoted(project.id)}
+                        className={`flex items-center space-x-1 transition-colors ${
+                          hasVoted(project.id)
+                            ? 'text-gray-400 cursor-not-allowed'
+                            : 'text-green-600 hover:text-green-700'
+                        }`}
+                        title={hasVoted(project.id) ? 'Already voted' : 'Vote for this project'}
                       >
-                        <ThumbsUp className="h-4 w-4" />
+                        <ThumbsUp className={`h-4 w-4 ${hasVoted(project.id) ? 'fill-current' : ''}`} />
                         <span className="text-sm font-medium">{project.votes || 0}</span>
                       </button>
                     </div>
@@ -356,52 +368,15 @@ const Home = () => {
                       </a>
                     )}
                   </div>
-                  <div className="flex items-center justify-center mt-3">
-                    <div className="flex items-center text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {team.length === 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { name: 'John Doe', role: 'Lead Developer', bio: 'Full-stack developer with 8+ years experience' },
-                { name: 'Jane Smith', role: 'Data Scientist', bio: 'AI/ML expert specializing in predictive analytics' },
-                { name: 'Mike Johnson', role: 'UI/UX Designer', bio: 'Creative designer focused on user experience' }
-              ].map((member, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 text-center"
-                >
-                  <div className="p-6">
-                    <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-white text-2xl font-bold">
-                        {member.name.charAt(0)}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                    <p className="text-green-600 font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
-                    <div className="flex items-center justify-center mt-3">
-                      <div className="flex items-center text-yellow-400">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-current" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="text-center py-12">
+              <p className="text-gray-600 text-lg">No team members added yet.</p>
+              <p className="text-gray-500 mt-2">Add team members from the admin dashboard.</p>
             </div>
           )}
         </div>

@@ -74,23 +74,24 @@ const ChatBot = () => {
 
   const getContextualResponse = async (userMessage) => {
     const context = `
-    You are a helpful assistant for goCode Softwares, a professional software development company. 
+    You are a helpful assistant for goCode Softwares, a professional software and data solutions company. 
     Our services include:
-    - Web Development (React, Node.js, full-stack applications)
-    - Mobile Development (iOS, Android, React Native, Flutter)
-    - Software Development (Desktop applications, enterprise solutions)
-    - Data Science (AI/ML, data analysis, predictive analytics)
+    - Data Engineering Solutions (Data pipelines, ETL, data warehousing, cloud data infrastructure)
+    - Data Analytics Solutions (Business intelligence, data visualization, reporting dashboards)
+    - Data Science Solutions (Predictive analytics, statistical modeling, machine learning)
+    - Software Development Solutions (Custom software, web applications, enterprise solutions)
+    - AI Solutions (Machine learning, NLP, computer vision, intelligent automation)
     
     Company info:
-    - We create innovative software solutions
+    - We create innovative data and software solutions
     - We work with businesses of all sizes
     - We offer consultation, development, and ongoing support
-    - Our team consists of experienced developers, designers, and data scientists
-    - We use modern technologies and best practices
+    - Our team consists of experienced data engineers, data scientists, software developers, and AI specialists
+    - We use modern technologies like Python, Apache Spark, TensorFlow, React, and cloud platforms
     - Contact: info@gocodesoftwares.com, +1 (234) 567-8900
     
     Please provide helpful, concise responses about our services, pricing (mention we offer competitive rates and custom quotes), 
-    project timelines, technologies we use, or general software development questions. 
+    project timelines, technologies we use, or general questions about data and software solutions. 
     Keep responses friendly, professional, and under 150 words.
     
     User question: ${userMessage}
@@ -206,9 +207,11 @@ const ChatBot = () => {
             {/* Header */}
             <div className="bg-green-600 text-white p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-bold">gC</span>
-                </div>
+                <img 
+                  src="https://i.postimg.cc/mgKQT5fL/gcv.webp"
+                  alt="goCode Logo" 
+                  className="w-8 h-8 rounded-full object-cover"
+                />
                 <div>
                   <h3 className="font-semibold">goCode Assistant</h3>
                   <p className="text-xs text-green-100">Online • Ready to help</p>

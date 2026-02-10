@@ -28,11 +28,33 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      // Save to Firebase
       await addDoc(collection(db, 'contacts'), {
         ...formData,
         timestamp: new Date(),
         status: 'new'
       });
+
+      // Save to Google Sheets (no-cors required for Google Apps Script)
+      const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_CONTACT_URL || '';
+      if (GOOGLE_SHEET_URL) {
+        try {
+          await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...formData,
+              timestamp: new Date().toISOString()
+            })
+          });
+          console.log('Contact sent to Google Sheets');
+        } catch (sheetError) {
+          console.error('Google Sheets error:', sheetError);
+        }
+      }
 
       toast.success('Message sent successfully! We\'ll get back to you soon.');
       setFormData({
@@ -79,13 +101,11 @@ const Contact = () => {
   ];
 
   const services = [
-    'Web Development',
-    'Mobile Development',
+    'Data Engineering',
+    'Data Analytics',
+    'Data Science',
     'Software Development',
-    'Data Science & AI',
-    'UI/UX Design',
-    'Consulting',
-    'Other'
+    'AI Solutions'
   ];
 
   return (

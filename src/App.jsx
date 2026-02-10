@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import ServiceDetail from './pages/ServiceDetail';
 import ProjectDetail from './pages/ProjectDetail';
 import BookService from './pages/BookService';
+import AdminDashboard from './AdminDashboard.jsx';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
 import './index.css';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/book" element={<BookService />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />

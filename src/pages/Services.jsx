@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Globe, Database, ArrowRight, Star, Clock, Users } from 'lucide-react';
+import { ArrowRight, Star, Clock, Users } from 'lucide-react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
@@ -22,56 +22,64 @@ const Services = () => {
 
   const defaultServices = [
     {
-      id: 'web-dev',
-      title: 'Web Development',
-      description: 'Custom web applications built with modern technologies like React, Node.js, and more.',
-      longDescription: 'We create responsive, scalable web applications using cutting-edge technologies. From simple websites to complex web platforms, we deliver solutions that drive business growth.',
-      icon: Globe,
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Responsive Design', 'Modern Frameworks', 'SEO Optimized', 'Fast Loading'],
-      technologies: ['React', 'Node.js', 'MongoDB', 'AWS'],
-      startingPrice: '$2,500',
-      timeline: '4-8 weeks',
+      id: 'data-engineering',
+      title: 'Data Engineering Solutions',
+      description: 'Build robust data pipelines and infrastructure for scalable data processing',
+      longDescription: 'Design and implement scalable data architectures, ETL pipelines, and data warehousing solutions that transform raw data into valuable business assets. Our data engineering services ensure your data is reliable, accessible, and ready for analysis.',
+      image: 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800',
+      features: ['Data Pipeline Development', 'ETL Processes', 'Data Warehousing', 'Cloud Data Infrastructure'],
+      technologies: ['Apache Spark', 'Kafka', 'Airflow', 'AWS', 'Snowflake', 'BigQuery'],
+      startingPrice: '$5,000',
+      timeline: '6-10 weeks',
       rating: 4.9
     },
     {
-      id: 'mobile-dev',
-      title: 'Mobile Development',
-      description: 'Native and cross-platform mobile applications for iOS and Android.',
-      longDescription: 'Build powerful mobile applications that engage users and drive business results. We develop both native and cross-platform solutions tailored to your needs.',
-      icon: Smartphone,
-      image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Cross-Platform', 'Native Performance', 'App Store Ready', 'Push Notifications'],
-      technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
-      startingPrice: '$5,000',
-      timeline: '8-12 weeks',
+      id: 'data-analytics',
+      title: 'Data Analytics Solutions',
+      description: 'Transform raw data into actionable insights and business intelligence',
+      longDescription: 'Leverage the power of your data with comprehensive analytics solutions. We help you uncover patterns, trends, and insights that drive strategic decision-making and business growth through advanced analytics and visualization.',
+      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
+      features: ['Business Intelligence', 'Data Visualization', 'Reporting Dashboards', 'Trend Analysis'],
+      technologies: ['Power BI', 'Tableau', 'SQL', 'Python', 'R', 'Excel'],
+      startingPrice: '$3,500',
+      timeline: '4-8 weeks',
       rating: 4.8
     },
     {
-      id: 'software-dev',
-      title: 'Software Development',
-      description: 'Desktop applications and enterprise software solutions.',
-      longDescription: 'Custom software solutions designed to streamline your business processes and improve efficiency. From desktop applications to enterprise systems.',
-      icon: Code,
-      image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Custom Solutions', 'Scalable Architecture', 'Integration Ready', 'Ongoing Support'],
-      technologies: ['Python', 'Java', 'C#', '.NET'],
-      startingPrice: '$7,500',
-      timeline: '10-16 weeks',
+      id: 'data-science',
+      title: 'Data Science Solutions',
+      description: 'Advanced analytics and predictive modeling to drive data-driven decisions',
+      longDescription: 'Unlock the full potential of your data with advanced data science techniques. From predictive modeling to statistical analysis, we help you make data-driven decisions that give you a competitive edge.',
+      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800',
+      features: ['Predictive Analytics', 'Statistical Modeling', 'Machine Learning', 'Data Mining'],
+      technologies: ['Python', 'R', 'Scikit-learn', 'Pandas', 'NumPy', 'Jupyter'],
+      startingPrice: '$4,500',
+      timeline: '6-12 weeks',
       rating: 4.9
     },
     {
-      id: 'data-science',
-      title: 'Data Science & AI',
-      description: 'Data analysis, machine learning, and AI solutions for your business.',
-      longDescription: 'Unlock the power of your data with advanced analytics, machine learning models, and AI solutions that provide actionable insights and automate processes.',
-      icon: Database,
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Predictive Analytics', 'Machine Learning', 'Data Visualization', 'AI Integration'],
-      technologies: ['Python', 'TensorFlow', 'Pandas', 'Tableau'],
-      startingPrice: '$3,500',
-      timeline: '6-10 weeks',
-      rating: 4.7
+      id: 'software-dev',
+      title: 'Software Development Solutions',
+      description: 'Custom software applications and enterprise solutions tailored to your needs',
+      longDescription: 'Build custom software solutions that streamline your business processes and drive efficiency. From web applications to enterprise systems, we deliver scalable, secure, and user-friendly software tailored to your specific requirements.',
+      image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800',
+      features: ['Custom Software', 'Web Applications', 'Enterprise Solutions', 'System Integration'],
+      technologies: ['React', 'Node.js', 'Python', 'Java', '.NET', 'AWS'],
+      startingPrice: '$7,500',
+      timeline: '8-16 weeks',
+      rating: 4.9
+    },
+    {
+      id: 'ai-solutions',
+      title: 'AI Solutions',
+      description: 'Intelligent automation and machine learning solutions for modern businesses',
+      longDescription: 'Harness the power of artificial intelligence to automate processes, enhance decision-making, and create intelligent systems. Our AI solutions include machine learning models, natural language processing, computer vision, and intelligent automation.',
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      features: ['Machine Learning Models', 'Natural Language Processing', 'Computer Vision', 'Intelligent Automation'],
+      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'scikit-learn', 'Keras'],
+      startingPrice: '$6,000',
+      timeline: '8-14 weeks',
+      rating: 4.8
     }
   ];
 
@@ -89,15 +97,14 @@ const Services = () => {
         >
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We offer comprehensive software development services to help your business thrive in the digital world. 
-            From web applications to AI solutions, we've got you covered.
+            We offer comprehensive data and software solutions to help your business thrive in the digital world. 
+            From data engineering to AI solutions, we've got you covered.
           </p>
         </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {displayServices.map((service, index) => {
-            const Icon = service.icon || Code;
             return (
               <motion.div
                 key={service.id}
@@ -112,9 +119,6 @@ const Services = () => {
                     alt={service.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-green-600 bg-opacity-80 flex items-center justify-center">
-                    <Icon className="h-20 w-20 text-white" />
-                  </div>
                 </div>
                 
                 <div className="p-8">

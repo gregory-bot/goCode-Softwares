@@ -13,10 +13,11 @@ const Footer = () => {
   ];
 
   const services = [
-    { name: 'Web Development', path: '/services/web-dev' },
-    { name: 'Mobile Development', path: '/services/mobile-dev' },
-    { name: 'Software Development', path: '/services/software-dev' },
-    { name: 'Data Science', path: '/services/data-science' }
+    { name: 'Data Engineering Solutions', path: '/services/data-engineering' },
+    { name: 'Data Analytics Solutions', path: '/services/data-analytics' },
+    { name: 'Data Science Solutions', path: '/services/data-science' },
+    { name: 'Software Development Solutions', path: '/services/software-dev' },
+    { name: 'AI Solutions', path: '/services/ai-solutions' }
   ];
 
   const socialLinks = [
@@ -33,9 +34,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">gC</span>
-              </div>
+              <img 
+                src="https://i.postimg.cc/mgKQT5fL/gcv.webp"
+                alt="goCode Logo" 
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <span className="text-xl font-bold">goCode Softwares</span>
             </Link>
             <p className="text-gray-300 leading-relaxed">

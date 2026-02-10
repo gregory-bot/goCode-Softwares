@@ -8,77 +8,107 @@ const ServiceDetail = () => {
 
   // Service details data
   const serviceDetails = {
-    'web-dev': {
-      title: 'Web Development',
-      subtitle: 'Custom Web Applications & Websites',
-      description: 'We create modern, responsive web applications that deliver exceptional user experiences and drive business growth.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'data-engineering': {
+      title: 'Data Engineering Solutions',
+      subtitle: 'Robust Data Pipelines & Infrastructure',
+      description: 'Design and implement scalable data architectures, ETL pipelines, and data warehousing solutions that transform raw data into valuable business assets.',
+      image: 'https://i.pinimg.com/736x/e6/35/c1/e635c1e8d80999c3ad87576d4bfc0032.jpg',
       features: [
-        'Responsive Design for all devices',
-        'Modern JavaScript frameworks (React, Vue, Angular)',
-        'Backend development with Node.js, Python, or PHP',
-        'Database integration (MongoDB, PostgreSQL, MySQL)',
-        'RESTful API development',
-        'Third-party integrations',
-        'SEO optimization',
-        'Performance optimization',
-        'Security best practices',
-        'Ongoing maintenance and support'
+        'Data Pipeline Development',
+        'ETL/ELT Process Design',
+        'Data Warehousing Solutions',
+        'Cloud Data Infrastructure (AWS, Azure, GCP)',
+        'Real-time Data Processing',
+        'Data Lake Implementation',
+        'Data Quality & Validation',
+        'Performance Optimization',
+        'Data Migration Services',
+        'Ongoing Support & Maintenance'
       ],
-      technologies: ['React', 'Node.js', 'MongoDB', 'AWS', 'Docker', 'TypeScript'],
+      technologies: ['Apache Spark', 'Kafka', 'Airflow', 'AWS', 'Snowflake', 'BigQuery', 'Python', 'SQL'],
       process: [
-        { step: 1, title: 'Discovery & Planning', description: 'We analyze your requirements and create a detailed project plan.' },
-        { step: 2, title: 'Design & Prototyping', description: 'Create wireframes and interactive prototypes for your approval.' },
-        { step: 3, title: 'Development', description: 'Build your application using modern technologies and best practices.' },
-        { step: 4, title: 'Testing & QA', description: 'Comprehensive testing to ensure quality and performance.' },
-        { step: 5, title: 'Deployment & Launch', description: 'Deploy your application and provide ongoing support.' }
+        { step: 1, title: 'Assessment & Planning', description: 'Analyze your data infrastructure needs and create a comprehensive plan.' },
+        { step: 2, title: 'Architecture Design', description: 'Design scalable data architecture tailored to your requirements.' },
+        { step: 3, title: 'Pipeline Development', description: 'Build robust ETL pipelines and data processing workflows.' },
+        { step: 4, title: 'Testing & Optimization', description: 'Test data flows and optimize for performance and reliability.' },
+        { step: 5, title: 'Deployment & Monitoring', description: 'Deploy infrastructure and provide ongoing monitoring and support.' }
       ],
       pricing: {
-        basic: { name: 'Basic Website', price: '$2,500', features: ['5 pages', 'Responsive design', 'Contact form', 'Basic SEO'] },
-        standard: { name: 'Business Website', price: '$5,000', features: ['10 pages', 'CMS integration', 'E-commerce ready', 'Advanced SEO', 'Analytics'] },
-        premium: { name: 'Custom Web App', price: '$10,000+', features: ['Custom functionality', 'User authentication', 'Database integration', 'API development', 'Admin panel'] }
+        basic: { name: 'Basic Pipeline', price: '$5,000', features: ['Simple ETL pipeline', 'Basic monitoring', 'Data validation', 'Cloud deployment'] },
+        standard: { name: 'Business Solution', price: '$10,000', features: ['Multiple data sources', 'Advanced transformations', 'Data warehouse setup', 'Real-time processing', 'Alerting'] },
+        premium: { name: 'Enterprise Platform', price: '$20,000+', features: ['Complex architecture', 'Data lake implementation', 'Advanced analytics', 'ML integration', 'Full automation'] }
       },
-      timeline: '4-12 weeks',
-      rating: 4.9
+      timeline: '6-10 weeks'
     },
-    'mobile-dev': {
-      title: 'Mobile Development',
-      subtitle: 'iOS & Android Applications',
-      description: 'Build powerful mobile applications that engage users and drive business results with native and cross-platform solutions.',
-      image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'data-analytics': {
+      title: 'Data Analytics Solutions',
+      subtitle: 'Transform Data into Actionable Insights',
+      description: 'Leverage the power of your data with comprehensive analytics solutions that uncover patterns, trends, and insights to drive strategic decision-making.',
+      image: 'https://i.postimg.cc/YS3NWbk7/hahaw.jpg',
       features: [
-        'Native iOS and Android development',
-        'Cross-platform solutions (React Native, Flutter)',
-        'User-friendly interface design',
-        'Push notifications',
-        'Offline functionality',
-        'App Store optimization',
-        'Backend integration',
-        'Payment gateway integration',
-        'Social media integration',
-        'Analytics and reporting'
+        'Business Intelligence Dashboards',
+        'Interactive Data Visualization',
+        'Custom Reporting Solutions',
+        'KPI Tracking & Monitoring',
+        'Trend Analysis & Forecasting',
+        'Ad-hoc Analysis Tools',
+        'Data Exploration',
+        'Performance Metrics',
+        'Self-service Analytics',
+        'Executive Reporting'
       ],
-      technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'AWS'],
+      technologies: ['Power BI', 'Tableau', 'SQL', 'Python', 'R', 'Excel', 'Google Analytics', 'Looker'],
       process: [
-        { step: 1, title: 'Strategy & Planning', description: 'Define app goals, target audience, and feature requirements.' },
-        { step: 2, title: 'UI/UX Design', description: 'Create intuitive and engaging mobile app designs.' },
-        { step: 3, title: 'Development', description: 'Build your app using the best mobile development practices.' },
-        { step: 4, title: 'Testing', description: 'Rigorous testing on multiple devices and platforms.' },
-        { step: 5, title: 'App Store Launch', description: 'Deploy to App Store and Google Play with ongoing support.' }
+        { step: 1, title: 'Requirements Gathering', description: 'Understand your business goals and analytics needs.' },
+        { step: 2, title: 'Data Discovery', description: 'Explore and profile your data sources.' },
+        { step: 3, title: 'Dashboard Development', description: 'Create interactive visualizations and reports.' },
+        { step: 4, title: 'Testing & Validation', description: 'Ensure accuracy and usability of analytics solutions.' },
+        { step: 5, title: 'Training & Deployment', description: 'Deploy dashboards and train your team on usage.' }
       ],
       pricing: {
-        basic: { name: 'Simple App', price: '$5,000', features: ['Basic functionality', 'Single platform', 'Simple UI', 'Basic backend'] },
-        standard: { name: 'Business App', price: '$10,000', features: ['Advanced features', 'Cross-platform', 'Custom UI', 'API integration', 'Push notifications'] },
-        premium: { name: 'Enterprise App', price: '$20,000+', features: ['Complex functionality', 'Multiple integrations', 'Advanced security', 'Custom backend', 'Analytics'] }
+        basic: { name: 'Basic Analytics', price: '$3,500', features: ['3-5 dashboards', 'Basic visualizations', 'Standard metrics', 'Monthly updates'] },
+        standard: { name: 'Business Analytics', price: '$7,000', features: ['10+ dashboards', 'Advanced visualizations', 'Custom metrics', 'Real-time data', 'User training'] },
+        premium: { name: 'Enterprise Analytics', price: '$15,000+', features: ['Unlimited dashboards', 'Predictive analytics', 'AI-powered insights', 'Full integration', 'Ongoing support'] }
       },
-      timeline: '8-16 weeks',
-      rating: 4.8
+      timeline: '4-8 weeks'
+    },
+    'data-science': {
+      title: 'Data Science Solutions',
+      subtitle: 'Advanced Analytics & Predictive Modeling',
+      description: 'Unlock the full potential of your data with advanced data science techniques including predictive modeling, statistical analysis, and machine learning.',
+      image: 'https://pbs.twimg.com/media/G7quTWhW4AAJM4l?format=jpg&name=large',
+      features: [
+        'Predictive Analytics & Modeling',
+        'Statistical Analysis',
+        'Machine Learning Applications',
+        'Data Mining & Pattern Recognition',
+        'Customer Segmentation',
+        'Churn Prediction',
+        'Recommendation Systems',
+        'Time Series Forecasting',
+        'A/B Testing & Experimentation',
+        'Model Deployment & Monitoring'
+      ],
+      technologies: ['Python', 'R', 'Scikit-learn', 'Pandas', 'NumPy', 'Jupyter', 'TensorFlow', 'XGBoost'],
+      process: [
+        { step: 1, title: 'Problem Definition', description: 'Define business problem and success metrics.' },
+        { step: 2, title: 'Data Collection & Preparation', description: 'Gather and clean data for analysis.' },
+        { step: 3, title: 'Model Development', description: 'Build and train predictive models.' },
+        { step: 4, title: 'Model Evaluation', description: 'Test and validate model performance.' },
+        { step: 5, title: 'Deployment & Monitoring', description: 'Deploy models and monitor performance over time.' }
+      ],
+      pricing: {
+        basic: { name: 'Basic Analytics', price: '$4,500', features: ['Single use case', 'Basic modeling', 'Analysis report', 'Recommendations'] },
+        standard: { name: 'Predictive Modeling', price: '$9,000', features: ['Multiple models', 'Advanced algorithms', 'Model deployment', 'Performance monitoring', 'Documentation'] },
+        premium: { name: 'Enterprise Data Science', price: '$18,000+', features: ['Complex modeling', 'Real-time predictions', 'AutoML pipeline', 'Continuous improvement', 'Full support'] }
+      },
+      timeline: '6-12 weeks'
     },
     'software-dev': {
-      title: 'Software Development',
-      subtitle: 'Desktop & Enterprise Solutions',
+      title: 'Software Development Solutions',
+      subtitle: 'Custom Software & Enterprise Applications',
       description: 'Custom software solutions designed to streamline your business processes and improve operational efficiency.',
-      image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: 'https://i.pinimg.com/736x/a6/83/15/a68315f072dd25f4c2d3410bf486b6f2.jpg',
       features: [
         'Desktop application development',
         'Enterprise software solutions',
@@ -104,41 +134,39 @@ const ServiceDetail = () => {
         standard: { name: 'Business Software', price: '$15,000', features: ['Multi-user support', 'Network database', 'Custom features', 'Reporting'] },
         premium: { name: 'Enterprise Solution', price: '$30,000+', features: ['Complex workflows', 'System integration', 'Advanced security', 'Custom modules'] }
       },
-      timeline: '10-20 weeks',
-      rating: 4.9
+      timeline: '8-16 weeks'
     },
-    'data-science': {
-      title: 'Data Science & AI',
-      subtitle: 'Analytics, Machine Learning & AI Solutions',
-      description: 'Unlock the power of your data with advanced analytics, machine learning models, and AI solutions that provide actionable insights.',
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'ai-solutions': {
+      title: 'AI Solutions',
+      subtitle: 'Intelligent Automation & Machine Learning',
+      description: 'Harness the power of artificial intelligence to automate processes, enhance decision-making, and create intelligent systems that drive business value.',
+      image: 'https://pbs.twimg.com/media/G7gIG0cXUAA65se?format=jpg&name=large',
       features: [
-        'Data analysis and visualization',
-        'Machine learning model development',
-        'Predictive analytics',
-        'Natural language processing',
-        'Computer vision solutions',
-        'Recommendation systems',
-        'Automated reporting',
-        'Data pipeline development',
-        'AI chatbots and assistants',
-        'Business intelligence dashboards'
+        'Machine Learning Model Development',
+        'Natural Language Processing (NLP)',
+        'Computer Vision Solutions',
+        'Intelligent Process Automation',
+        'Chatbot & Virtual Assistants',
+        'Recommendation Engines',
+        'Sentiment Analysis',
+        'Image & Video Recognition',
+        'AI-powered Analytics',
+        'Model Deployment & MLOps'
       ],
-      technologies: ['Python', 'TensorFlow', 'PyTorch', 'Pandas', 'Tableau', 'AWS'],
+      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'scikit-learn', 'Keras', 'LangChain', 'AWS SageMaker'],
       process: [
-        { step: 1, title: 'Data Assessment', description: 'Evaluate your data sources and quality for analysis readiness.' },
-        { step: 2, title: 'Model Development', description: 'Create and train machine learning models for your specific needs.' },
-        { step: 3, title: 'Validation & Testing', description: 'Validate model accuracy and performance with real data.' },
-        { step: 4, title: 'Integration', description: 'Integrate AI solutions into your existing systems and workflows.' },
-        { step: 5, title: 'Monitoring & Optimization', description: 'Continuously monitor and improve model performance.' }
+        { step: 1, title: 'Use Case Discovery', description: 'Identify AI opportunities and define business objectives.' },
+        { step: 2, title: 'Data Preparation', description: 'Collect, clean, and prepare data for AI models.' },
+        { step: 3, title: 'Model Development', description: 'Build and train AI models using advanced techniques.' },
+        { step: 4, title: 'Testing & Validation', description: 'Validate model accuracy and performance.' },
+        { step: 5, title: 'Deployment & Optimization', description: 'Deploy AI solutions and continuously improve performance.' }
       ],
       pricing: {
-        basic: { name: 'Data Analysis', price: '$3,500', features: ['Basic analytics', 'Data visualization', 'Simple reports', 'Dashboard'] },
-        standard: { name: 'ML Solution', price: '$8,000', features: ['Custom ML models', 'Predictive analytics', 'Advanced visualization', 'API integration'] },
-        premium: { name: 'AI Platform', price: '$15,000+', features: ['Complex AI systems', 'Real-time processing', 'Multiple models', 'Custom infrastructure'] }
+        basic: { name: 'AI Proof of Concept', price: '$6,000', features: ['Single AI model', 'Basic integration', 'Performance report', 'Recommendations'] },
+        standard: { name: 'AI Application', price: '$12,000', features: ['Multiple models', 'API integration', 'User interface', 'Monitoring dashboard', 'Documentation'] },
+        premium: { name: 'Enterprise AI Platform', price: '$25,000+', features: ['Advanced AI capabilities', 'Full automation', 'Scalable infrastructure', 'MLOps pipeline', 'Ongoing support'] }
       },
-      timeline: '6-14 weeks',
-      rating: 4.7
+      timeline: '8-14 weeks'
     }
   };
 
@@ -184,17 +212,8 @@ const ServiceDetail = () => {
                 
                 <div className="flex items-center space-x-6 mb-8">
                   <div className="flex items-center">
-                    <Star className="h-5 w-5 text-yellow-400 fill-current mr-1" />
-                    <span className="font-semibold">{service.rating}</span>
-                    <span className="text-green-100 ml-1">rating</span>
-                  </div>
-                  <div className="flex items-center">
                     <Clock className="h-5 w-5 text-green-100 mr-1" />
                     <span>{service.timeline}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Users className="h-5 w-5 text-green-100 mr-1" />
-                    <span>Expert team</span>
                   </div>
                 </div>
                 
