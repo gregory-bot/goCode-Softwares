@@ -381,6 +381,175 @@ const Home = () => {
           )}
         </div>
       </section>
+
+      {/* Partners Section */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Partners</h2>
+          </motion.div>
+
+          {/* Scrolling Partners */}
+          <div className="relative">
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex space-x-12"
+                animate={{
+                  x: [0, -1920],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 30,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* First set of logos */}
+                <div className="flex space-x-12 flex-shrink-0">
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                      alt="Microsoft"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
+                      alt="Google"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://tse1.mm.bing.net/th/id/OIP.W_hbKPBDWxyN24S2Kw-RTQAAAA?w=300&h=150&rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt="University of Nairobi"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/640px-IBM_logo.svg.png"
+                      alt="IBM"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/640px-Amazon_Web_Services_Logo.svg.png"
+                      alt="AWS"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                   <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://tse1.mm.bing.net/th/id/OIP.2XBHFvtIAcvGyoOrbugKBQHaEc?rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt="Palladium"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png"
+                      alt="GitHub"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://th.bing.com/th/id/R.2789e55767fa6d0c6db0e9d556889b48?rik=1H78CpsyWnf2vA&riu=http%3a%2f%2fwww.dudonwai.com%2fimg%2fkaggle.JPG&ehk=Gb%2fuwiLEpWbCcxHW5SThl%2bUkrC%2fkGQsZWpkZZjO4Yqw%3d&risl=&pid=ImgRaw&r=0"
+                      alt="Kaggle"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/640px-Docker_%28container_engine%29_logo.svg.png"
+                      alt="Docker"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Duplicate set for seamless loop */}
+                <div className="flex space-x-12 flex-shrink-0">
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                      alt="Microsoft"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
+                      alt="Google"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXNWP6YbEbLc_-0kp3R_YMv3lL2U0H6GCQrA&s"
+                      alt="University of Nairobi"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/640px-IBM_logo.svg.png"
+                      alt="IBM"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/640px-Amazon_Web_Services_Logo.svg.png"
+                      alt="AWS"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://tse1.mm.bing.net/th/id/OIP.2XBHFvtIAcvGyoOrbugKBQHaEc?rs=1&pid=ImgDetMain&o=7&rm=3"
+                      alt="Palladium"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png"
+                      alt="GitHub"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://th.bing.com/th/id/R.2789e55767fa6d0c6db0e9d556889b48?rik=1H78CpsyWnf2vA&riu=http%3a%2f%2fwww.dudonwai.com%2fimg%2fkaggle.JPG&ehk=Gb%2fuwiLEpWbCcxHW5SThl%2bUkrC%2fkGQsZWpkZZjO4Yqw%3d&risl=&pid=ImgRaw&r=0"
+                      alt="Kaggle"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                  <div className="w-48 h-24 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/640px-Docker_%28container_engine%29_logo.svg.png"
+                      alt="Docker"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

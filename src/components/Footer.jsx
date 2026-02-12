@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,13 +20,6 @@ const Footer = () => {
     { name: 'AI Solutions', path: '/services/ai-solutions' }
   ];
 
-  const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' }
-  ];
-
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -42,26 +35,8 @@ const Footer = () => {
               <span className="text-xl font-bold">goCode Softwares</span>
             </Link>
             <p className="text-gray-300 leading-relaxed">
-              Transforming ideas into powerful software solutions. We create innovative applications 
-              that drive business growth and user engagement.
+              Center for Data and Software Solutions
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors duration-300"
-                    aria-label={social.label}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -122,17 +97,17 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-green-400" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+254748163492"
                   className="text-gray-300 hover:text-green-400 transition-colors duration-300"
                 >
-                  +1 (234) 567-8900
+                  +254 748 163 492
                 </a>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-green-400 mt-1" />
                 <span className="text-gray-300">
-                  123 Tech Street<br />
-                  Innovation City, IC 12345
+                  Nairobi<br />
+                  Westlands
                 </span>
               </div>
             </div>
@@ -141,30 +116,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center">
             <p className="text-gray-400 text-sm">
               © {currentYear} goCode Softwares. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                to="/privacy"
-                className="text-gray-400 hover:text-green-400 text-sm transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-gray-400 hover:text-green-400 text-sm transition-colors duration-300"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                to="/cookies"
-                className="text-gray-400 hover:text-green-400 text-sm transition-colors duration-300"
-              >
-                Cookie Policy
-              </Link>
-            </div>
           </div>
         </div>
       </div>
