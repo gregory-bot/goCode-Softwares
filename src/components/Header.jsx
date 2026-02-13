@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Menu, X, Home, Info, Briefcase, Calendar, Phone, Users } from 'lucide-react';
+import { Search, Menu, X, Home, Info, Briefcase, Calendar, Phone } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -330,34 +330,6 @@ const Header = () => {
                     );
                   })}
                 </nav>
-
-                {/* Team Section */}
-                <div className="mt-8 pt-8 border-t border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <Users className="h-5 w-5 mr-2" />
-                    Our Team
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm font-bold">JD</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">John Doe</p>
-                        <p className="text-sm text-gray-600">Lead Developer</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-sm font-bold">JS</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Jane Smith</p>
-                        <p className="text-sm text-gray-600">Data Scientist</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </motion.div>
