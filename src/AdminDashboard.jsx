@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from './firebase/config';
@@ -12,6 +12,8 @@ function AdminDashboard() {
   const [showProjectModal, setShowProjectModal] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
   const [editingTeamMember, setEditingTeamMember] = useState(null);
+  const projectFormRef = useRef(null);
+  const teamFormRef = useRef(null);
   const [projectForm, setProjectForm] = useState({
     title: '',
     description: '',
@@ -131,6 +133,10 @@ function AdminDashboard() {
       votes: project.votes || 0
     });
     setShowProjectModal(true);
+    // Smooth scroll to form
+    setTimeout(() => {
+      projectFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   // Handle add/edit team member
@@ -193,6 +199,10 @@ function AdminDashboard() {
       image: member.image || '',
       skills: Array.isArray(member.skills) ? member.skills.join(', ') : ''
     });
+    // Smooth scroll to form
+    setTimeout(() => {
+      teamFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   // Get category label
@@ -236,10 +246,10 @@ function AdminDashboard() {
 
         {/* Projects Tab */}
         {activeTab === 'projects' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-8">
             {/* Add New Project Form */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <div ref={projectFormRef} className="bg-white rounded-xl shadow-md p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Plus className="mr-2" />
                 {editingProject ? 'Edit Project' : 'Add New Project'}
               </h2>
@@ -443,10 +453,10 @@ function AdminDashboard() {
 
         {/* Team Tab */}
         {activeTab === 'team' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-8">
             {/* Add New Team Member Form */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <div ref={teamFormRef} className="bg-white rounded-xl shadow-md p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center">
                 <Plus className="mr-2" />
                 {editingTeamMember ? 'Edit Team Member' : 'Add New Team Member'}
               </h2>
@@ -564,36 +574,36 @@ function AdminDashboard() {
             </div>
 
             {/* Existing Team Members */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Team Members ({team.length})</h2>
+            <div className="bg-white rounded-xl shadow-md p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Team Members ({team.length})</h2>
               
-              <div className="space-y-4 max-h-[800px] overflow-y-auto">
+              <div className="space-y-4 max-h-[600px] sm:max-h-[800px] overflow-y-auto">
                 {team.map((member) => (
                   <motion.div
                     key={member.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex flex-col sm:flex-row items-start gap-4">
                       {member.image ? (
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="w-16 h-16 rounded-full object-cover"
+                          className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                         />
                       ) : (
-                        <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white text-xl font-bold">
+                        <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
                           {member.name?.charAt(0) || 'U'}
                         </div>
                       )}
                       
-                      <div className="flex-1">
-                        <h3 className="font-bold text-gray-900 text-lg">{member.name}</h3>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-bold text-gray-900 text-base sm:text-lg">{member.name}</h3>
                         <p className="text-green-600 font-medium mb-1">{member.role}</p>
-                        <p className="text-sm text-gray-600 mb-2">{member.bio}</p>
+                        <p className="text-sm text-gray-600 mb-2 break-words">{member.bio}</p>
                         <div className="flex flex-col gap-1 text-sm text-gray-600">
-                          <p>📧 {member.email}</p>
+                          <p className="break-all">📧 {member.email}</p>
                           {member.phone && <p>📱 {member.phone}</p>}
                         </div>
                         {Array.isArray(member.skills) && member.skills.length > 0 && (
@@ -607,7 +617,7 @@ function AdminDashboard() {
                         )}
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 self-start">
                         <button
                           onClick={() => handleEditTeamMember(member)}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
